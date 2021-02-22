@@ -2,10 +2,10 @@ import requests
 from requests.auth import HTTPBasicAuth
 from models.product import Product
 
-URL="https://www.spraylakk.no/wp-json/wc/v3/products/"
-KEY="ck_f21327a9209b6e2dd5f52f47178192010227015a"
-SECRET="cs_c98fd392e74f8c46a8c80473e2961844bf515b37"
-AUTH=HTTPBasicAuth(KEY, SECRET)
+URL = "https://www.spraylakk.no/wp-json/wc/v3/"
+KEY = "ck_f21327a9209b6e2dd5f52f47178192010227015a"
+SECRET = "cs_c98fd392e74f8c46a8c80473e2961844bf515b37"
+AUTH = HTTPBasicAuth(KEY, SECRET)
 
     
 if __name__ == "__main__":
@@ -22,9 +22,9 @@ if __name__ == "__main__":
         'height': "0.4"
     }
 
-    entity = Product(data)
-    response = requests.put(URL+entity.key, entity.data(), auth=AUTH)
-    print(response.text)
+    p = Product(data)
+    response = requests.put(URL+p.resource, json=p.data(), auth=AUTH)
+    print(response)
 
 
 
