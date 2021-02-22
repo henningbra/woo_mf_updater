@@ -11,7 +11,7 @@ class Model:
 
     @property
     def resource(self):
-        return self.endpoint + str(self.key)
+        return self.endpoint + self.key
 
     def data(self):
         return self.__dict__
@@ -22,22 +22,22 @@ class Product(Model):
     endpoint = 'products/'
 
     def __init__(self, kwargs):
-        self.key = kwargs.pop('key')
-        self.sku = kwargs.pop('sku')
-        self.regular_price = kwargs.pop('regular_price')
-        self.sales_price = kwargs.pop('sales_price')
+        self.key = str(kwargs.pop('key'))
+        self.sku = str(kwargs.pop('sku'))
+        self.regular_price = str(kwargs.pop('regular_price'))
+        self.sales_price = str(kwargs.pop('sales_price'))
         self.dimensions = {
-            'length': kwargs.pop('length'),
-            'width': kwargs.pop('width'),
-            'height': kwargs.pop('height'),
+            'length': str(kwargs.pop('length')),
+            'width': str(kwargs.pop('width')),
+            'height': str(kwargs.pop('height')),
         }
-        self.weight = kwargs.pop('weight')
+        self.weight = str(kwargs.pop('weight'))
         self.meta_data = []
         self.meta_data.append(
             {
                 'key': 'wpseo_global_identifier_values',
                 'value': {
-                    'gtin13': kwargs.pop('gtin13')
+                    'gtin13': str(kwargs.pop('gtin13'))
                 }
             }
         )
