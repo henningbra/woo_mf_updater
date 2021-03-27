@@ -43,6 +43,27 @@ class Product(Model):
         )
 
 
+class Product1(Model):
+
+    endpoint = 'products/'
+
+    def __init__(self, kwargs):
+        self.key = str(kwargs.pop('key', None))
+        self.meta_data = []
+        self.meta_data.append(
+            {
+                'key': '_woosea_ean',
+                'value': str(kwargs.pop('gtin13', None))
+            }
+        )
+        self.meta_data.append(
+            {
+                'key': '_woosea_brand',
+                'value': str(kwargs.pop('brand', None))
+            }
+        )
+
+
 if __name__ == "__main__":
 
     data = {
