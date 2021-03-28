@@ -52,8 +52,14 @@ class Product1(Model):
         self.meta_data = []
         self.meta_data.append(
             {
-                'key': '_woosea_ean',
+                'key': '_woosea_gtin',
                 'value': str(kwargs.pop('gtin13', None))
+            }
+        )
+        self.meta_data.append(
+            {
+                'key': '_woosea_ean',
+                'value': None
             }
         )
         self.meta_data.append(
